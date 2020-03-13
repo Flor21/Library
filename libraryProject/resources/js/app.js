@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 import BootstrapVue from 'bootstrap-vue';
+import Routes from '@/js/routes.js';
 
 window.Vue = require('vue');
 Vue.use(BootstrapVue);
@@ -15,7 +16,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('subjects', require('./components/Subjects.vue').default);
 Vue.component('list-subjects', require('./components/ListSubjects.vue').default);
 Vue.component('my-section', require('./components/MySection.vue').default);
+Vue.component('my-subjects', require('./components/MySubjects.vue').default);
+Vue.component('home', require('./components/Home.vue').default);
 
 const app = new Vue({
     el: '#app',
+    router: Routes,
 });

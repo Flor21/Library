@@ -17,20 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//My Subjects
-//List subjects
-Route::get('mySubjects', 'SubjectUserController@index')->middleware('auth');
-
-//List single subject
-Route::get('mySubject/{id}', 'SubjectUserController@show');
-
-//Delete subject
-Route::delete('mySubject/{id}', 'SubjectUserController@destroy');
-
 //Subjects
 //List subjects
 Route::get('subjects', 'SubjectController@index');
-
 //List single subject
 Route::get('subject/{year}', 'SubjectController@show');
 
@@ -42,3 +31,14 @@ Route::post('subject', 'SubjectController@store');
 
 //Delete subject
 Route::delete('subject/{id}', 'SubjectController@destroy');
+
+//My Subjects
+//List subjects
+Route::get('mySubjects', 'SubjectUserController@index')->middleware('auth');
+
+//List single subject
+Route::get('mySubject/{id}', 'SubjectUserController@show');
+
+//Delete subject
+Route::delete('mySubject/{id}', 'SubjectUserController@destroy');
+
