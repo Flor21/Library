@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //My Subjects
 //List subjects
-Route::get('mySubjects', 'SubjectUserController@index');
+Route::get('mySubjects', 'SubjectUserController@index')->middleware('auth');
 
 //List single subject
 Route::get('mySubject/{id}', 'SubjectUserController@show');

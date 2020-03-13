@@ -5,10 +5,16 @@
  */
 
 require('./bootstrap');
+import BootstrapVue from 'bootstrap-vue';
 
 window.Vue = require('vue');
+Vue.use(BootstrapVue);
+
 /** Se va a utilizar para registrar nuestros propios componentes**/
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('subjects', require('./components/Subjects.vue').default);
+Vue.component('list-subjects', require('./components/ListSubjects.vue').default);
+Vue.component('my-section', require('./components/MySection.vue').default);
 
 const app = new Vue({
     el: '#app',

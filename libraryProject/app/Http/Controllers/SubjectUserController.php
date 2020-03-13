@@ -12,10 +12,16 @@ class SubjectUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $subjectUser = SubjectUser::all();
-        return $subject_user;
+        if($request->ajax())
+        {
+            return SubjectUser::where('user_id', auth()->id())->get();
+        }else{
+            return view('home');
+        }
+        //$subjectUser = SubjectUser::all();
+        //return $subject_user;
     }
 
     /**

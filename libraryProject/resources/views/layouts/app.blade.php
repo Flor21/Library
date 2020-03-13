@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Library</title>
+    <title>Subject</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -27,7 +27,7 @@
                     {{ config('app.name', 'Laravel') }}
                 </a>-->
                
-                <img src="https://us.123rf.com/450wm/glopphy/glopphy1704/glopphy170400003/75504912-dise%C3%B1o-de-vector-de-icono-de-flor-de-loto-rosa.jpg?ver=6" style="width:100px; height:100px;" alt="Responsive image" />
+               <!-- <img src="https://us.123rf.com/450wm/glopphy/glopphy1704/glopphy170400003/75504912-dise%C3%B1o-de-vector-de-icono-de-flor-de-loto-rosa.jpg?ver=6" style="width:100px; height:100px;" alt="Responsive image" />-->
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -38,7 +38,6 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
