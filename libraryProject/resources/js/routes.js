@@ -19,7 +19,7 @@ const router = new VueRouter({
             path:'/mySubjects',
             name: 'mySubjects',
             component: MySubjects
-        },
+        }
     ]
 });
 
