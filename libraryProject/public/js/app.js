@@ -2184,9 +2184,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      mySubjects: [],
+      mySubject: {
+        id: '',
+        user_id: '',
+        subject_id: '',
+        state: ''
+      }
+    };
+  },
+  created: function created() {
+    this.mSubjects();
+  },
+  methods: {
+    mSubjects: function mSubjects() {
+      var _this = this;
+
+      axios.get('/api/mySubjects') // .then((response) => console.log(response.data));
+      .then(function (response) {
+        _this.mySubjects = response.data;
+      });
+    }
+  },
   mounted: function mounted() {
-    console.log('my');
+    console.log('my.');
   }
 });
 
@@ -2201,7 +2230,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _js_components_MySection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/components/MySection */ "./resources/js/components/MySection.vue");
 //
 //
 //
@@ -2214,10 +2242,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    MySection: _js_components_MySection__WEBPACK_IMPORTED_MODULE_0__["default"]
+  methods: {
+    mySubject: function mySubject() {
+      this.$router.push('mySubjects'); //#6cb2eb #6fa9da"
+    }
   },
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -76130,16 +76161,31 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    [
+      _c(
+        "b-list-group",
+        _vm._l(_vm.mySubjects, function(mySubject) {
+          return _c(
+            "div",
+            [
+              _c("b-list-group-item", { attrs: { variant: "info" } }, [
+                _vm._v(_vm._s(mySubject.subject_id))
+              ]),
+              _vm._v(" "),
+              _c("b-list-group-item", [_vm._v(_vm._s(mySubject.state))])
+            ],
+            1
+          )
+        }),
+        0
+      )
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("hola")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -76162,37 +76208,55 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "nav",
-    { staticClass: "navbar", staticStyle: { "background-color": "#e3f2fd" } },
+    "b-navbar",
+    { staticStyle: { "background-color": "#e3f2fd" } },
     [
-      _c("a", { staticClass: "navbar-brand" }, [_vm._v("Search subject")]),
+      _c(
+        "div",
+        [
+          _c(
+            "b-button",
+            {
+              attrs: { pill: "", variant: "outline-info" },
+              on: { click: _vm.mySubject }
+            },
+            [_vm._v("My Subject")]
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c("my-section")
+      _c(
+        "b-navbar-nav",
+        { staticClass: "ml-auto" },
+        [
+          _c(
+            "b-nav-form",
+            [
+              _c("b-form-input", {
+                staticClass: "mr-sm-2",
+                attrs: { placeholder: "Search subject" }
+              }),
+              _vm._v(" "),
+              _c(
+                "b-button",
+                {
+                  staticClass: "my-2 my-sm-0",
+                  attrs: { pill: "", variant: "outline-info", type: "submit" }
+                },
+                [_vm._v("Search")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("form", { staticClass: "form-inline" }, [
-      _c("input", {
-        staticClass: "form-control mr-sm-2",
-        attrs: { type: "search", placeholder: "Search", "aria-label": "Search" }
-      }),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-outline-info", attrs: { type: "submit" } },
-        [_vm._v("Search")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

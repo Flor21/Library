@@ -33,8 +33,11 @@ Route::post('subject', 'SubjectController@store');
 Route::delete('subject/{id}', 'SubjectController@destroy');
 
 //My Subjects
-//List subjects
+//List my subjects
 Route::get('mySubjects', 'SubjectUserController@index')->middleware('auth');
+
+//Create new my subject
+Route::post('mySubject', 'SubjectUserController@store');
 
 //List single subject
 Route::get('mySubject/{id}', 'SubjectUserController@show');

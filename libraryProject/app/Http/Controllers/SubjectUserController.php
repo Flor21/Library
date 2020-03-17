@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\subject_user;
 use Illuminate\Http\Request;
 
@@ -12,16 +13,17 @@ class SubjectUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index(Request $request)
     {
         if($request->ajax())
         {
-            return SubjectUser::where('user_id', auth()->id())->get();
+            return subject_user::where('user_id', auth()->id())->get();
         }else{
             return view('home');
         }
         //$subjectUser = SubjectUser::all();
-        //return $subject_user;
+        //return $subjectUser;
     }
 
     /**
@@ -32,11 +34,10 @@ class SubjectUserController extends Controller
      */
     public function store(Request $request)
     {
-        $subjectUser = new SubjectUser();
-        $subjectUser->name = $request->name;
-        $subjectUser->year = $request->year;
-        $subjectUser->dictation = $request->dictation;
-        $subjectUser->type = $request->type;
+        $subjectUser = new subject_user();
+        $subjectUser->user_id = Auth::id();
+        $subjectUser->subject_id = $request->subject_id;
+        $subjectUser->state = $request->state;
         $subjectUser->save();
         return $subjectUser;
     }
@@ -47,10 +48,12 @@ class SubjectUserController extends Controller
      * @param  \App\subject_user  $subject_user
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $year)
+    public function show(Request $request, $subject_id)
     {
-        $subjectUser = SubjectUser::where('year', '=',$year)->get();
+        $subjectUser = subject_user::where('subject_id', '=',$subject_id)->get();
         return $subjectUser;
+        //$subjectUser = subject_user::where('year', '=',$year)->get();
+        //return $subjectUser;
     }
 
     /**
@@ -73,7 +76,7 @@ class SubjectUserController extends Controller
      */
     public function destroy($id)
     {
-        $subjectUser = SubjectUser::find($id);
+        $subjectUser = subject_user::find($id);
         $subjectUser->delete();
     }
 }
