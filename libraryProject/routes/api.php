@@ -17,6 +17,22 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+Route::post('/user/login', 'UserController@login');
+Route::post('/user', 'UserController@register');
+
+Route::group(['middleware' => 'jwt.auth'], function(){
+    Route::get('mySubjects', 'SubjectUserController@index');
+    Route::post('mySubject', 'SubjectUserController@store');
+    Route::get('mySubject/{id}', 'SubjectUserController@show');
+    Route::delete('mySubject/{id}', 'SubjectUserController@destroy');
+
+
+
+});
+
+
+
 //Subjects
 //List subjects
 Route::get('subjects', 'SubjectController@index');
@@ -32,16 +48,5 @@ Route::post('subject', 'SubjectController@store');
 //Delete subject
 Route::delete('subject/{id}', 'SubjectController@destroy');
 
-//My Subjects
-//List my subjects
-Route::get('mySubjects', 'SubjectUserController@index')->middleware('auth');
-
-//Create new my subject
-Route::post('mySubject', 'SubjectUserController@store');
-
 //List single subject
-Route::get('mySubject/{id}', 'SubjectUserController@show');
-
-//Delete subject
-Route::delete('mySubject/{id}', 'SubjectUserController@destroy');
-
+//Route::get('mySubject/{id}', 'SubjectUserController@show');

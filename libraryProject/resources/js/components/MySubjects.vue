@@ -28,10 +28,10 @@
         methods: {
             mSubjects() {
                 axios.get('/api/mySubjects')
-               // .then((response) => console.log(response.data));
-               .then((response) => {
-                   this.mySubjects = response.data;
-               });
+               .then((response) => console.log(response.data));
+               //.then((response) => {
+                 //  this.mySubjects = response.data;
+               //});
                     
             },
         },         

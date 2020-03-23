@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use App\User;
 use App\subject_user;
 use Illuminate\Http\Request;
 
@@ -16,14 +17,9 @@ class SubjectUserController extends Controller
     
     public function index(Request $request)
     {
-        if($request->ajax())
-        {
-            return subject_user::where('user_id', auth()->id())->get();
-        }else{
-            return view('home');
-        }
-        //$subjectUser = SubjectUser::all();
-        //return $subjectUser;
+        $user = Auth::user();
+        $subjectUser = $user->subjects()->get();
+        return response()->json($subjectUser);
     }
 
     /**
@@ -34,10 +30,16 @@ class SubjectUserController extends Controller
      */
     public function store(Request $request)
     {
-        $subjectUser = new subject_user();
-        $subjectUser->user_id = Auth::id();
-        $subjectUser->subject_id = $request->subject_id;
-        $subjectUser->state = $request->state;
+        //$data = $request->all();
+        //$data['user_id'] = Auth::user()->id; 
+        //$subjectUser = new subject_user($data);
+        //$subjectUser->save();
+        //return Auth::user()->id;
+
+       $subjectUser = new subject_user();
+        $subjectUser -> user_id = Auth::id();
+        $subjectUser -> subject_id = $request->subject_id;
+        $subjectUser -> state = $request->state;
         $subjectUser->save();
         return $subjectUser;
     }

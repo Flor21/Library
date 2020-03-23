@@ -19,7 +19,6 @@ class CreateSubjectsTable extends Migration
             $table->integer('year');
             $table->string('dictation');
             $table->string('type')->nullable();
-            $table->timestamps();
         });
     }
 

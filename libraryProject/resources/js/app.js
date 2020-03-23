@@ -19,6 +19,10 @@ Vue.component('my-section', require('./components/MySection.vue').default);
 Vue.component('my-subjects', require('./components/MySubjects.vue').default);
 Vue.component('home', require('./components/Home.vue').default);
 
+
+Vue.component('login', require('./components/Login.vue').default);
+
+
 const app = new Vue({
     el: '#app',
     router: Routes,
