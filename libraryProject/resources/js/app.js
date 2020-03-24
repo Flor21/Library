@@ -7,7 +7,7 @@
 require('./bootstrap');
 import BootstrapVue from 'bootstrap-vue';
 import Routes from '@/js/routes.js';
-
+//import store from '@/js/store.js';
 window.Vue = require('vue');
 Vue.use(BootstrapVue);
 
@@ -21,6 +21,7 @@ Vue.component('home', require('./components/Home.vue').default);
 
 
 Vue.component('login', require('./components/Login.vue').default);
+Vue.component('header', require('./components/Header.vue').default);
 
 
 const app = new Vue({

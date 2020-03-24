@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    token: localStorage.getItem('access_token') || null
+    token: localStorage.getItem('access_token') || null,
+    auth_error: null
   },
   getters: {
     loggedIn(state) {
@@ -13,6 +14,16 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
+    login(state){
+        state.auth_error = null
+        console.log(state.token)
+    },
+    loginSuccess() {
+        state.token = token
+    },
+    loginFailed(state, payload){
+        state.auth_error = payload.error;
+    },
     retrieveToken(state, token) {
       state.token = token
     },
@@ -21,6 +32,9 @@ const store = new Vuex.Store({
     }
   },
   actions: {
+    login(context){
+        context.commit("login");
+    },
     retrieveToken(context, credentials) {
 
       return new Promise((resolve, reject) => {

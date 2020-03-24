@@ -14,6 +14,7 @@ export function login(credentials){
     return new Promise((res,rej)=>{
         axios.post('/api/user/login', credentials)
         .then(response => {
+            //console.log(response.data);
             res(response.data);
         })
         .catch(err => {
