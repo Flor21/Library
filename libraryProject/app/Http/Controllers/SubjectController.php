@@ -53,10 +53,15 @@ class SubjectController extends Controller
      * @param  \App\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $year)
+    /*public function show(Request $request, $name)
     {
-        $subject = Subject::where('year', '=',$year)->get();
+        $subject = Subject::where('name', '=',$name)->get();
         return $subject;
+    }*/
+
+    public function search(Request $request, $name)
+    {
+        return Subject::where('name', 'like', $name.'%')->get();
     }
 
     /**

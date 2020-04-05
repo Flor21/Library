@@ -135,8 +135,7 @@
         },
         methods: {
             aSubjects() {
-                axios.get('/api/subjects')
-               // .then((response) => console.log(response.data));
+                axios.get(`/api/subjects`)
                .then((response) => {
                    this.subjects = response.data;
                });
