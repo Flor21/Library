@@ -28,10 +28,6 @@ Route::group(['middleware' => 'jwt.auth'], function(){
     Route::get('mySubject/{id}', 'SubjectUserController@show');
     Route::delete('mySubject/{id}', 'SubjectUserController@destroy');
     Route::get('/user', 'UserController@user');
-
-
-
-
 });
 
 
@@ -40,7 +36,7 @@ Route::group(['middleware' => 'jwt.auth'], function(){
 //List subjects
 Route::get('subjects', 'SubjectController@index');
 //List single subject
-Route::get('subject/{year}', 'SubjectController@show');
+//Route::get('subject/{name}', 'SubjectController@show');
 
 //Create new subject
 Route::post('subject', 'SubjectController@store');
@@ -51,5 +47,5 @@ Route::post('subject', 'SubjectController@store');
 //Delete subject
 Route::delete('subject/{id}', 'SubjectController@destroy');
 
-//List single subject
-//Route::get('mySubject/{id}', 'SubjectUserController@show');
+//List subject by word
+Route::get('subject/{name}', 'SubjectController@search');

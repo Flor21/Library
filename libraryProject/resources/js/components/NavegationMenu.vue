@@ -33,6 +33,9 @@
         methods: {
             logout() {
                 localStorage.removeItem('user');
+                localStorage.removeItem('button');
+                localStorage.removeItem('text');
+
                 this.$router.push('/login');
             }
         },
