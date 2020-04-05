@@ -25,8 +25,7 @@ Vue.component('list-subjects', require('./components/ListSubjects.vue').default)
 Vue.component('my-section', require('./components/MySection.vue').default);
 Vue.component('my-subjects', require('./components/MySubjects.vue').default);
 Vue.component('home', require('./components/Home.vue').default);
-
-
+Vue.component('search', require('./components/Search.vue').default);
 
 Vue.component('login', require('./components/Login.vue').default);
 Vue.component('navegation-menu', require('./components/NavegationMenu.vue').default);

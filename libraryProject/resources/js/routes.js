@@ -5,9 +5,7 @@ import Home from '@/js/components/Home';
 import MySubjects from '@/js/components/MySubjects';
 import Login from '@/js/components/Login';
 import FrontPage from '@/js/components/FrontPage';
-
-
-
+import Search from '@/js/components/Search';
 
 Vue.use(VueRouter);
 
@@ -33,6 +31,11 @@ const router = new VueRouter({
             path:'/mySubjects',
             name: 'mySubjects',
             component: MySubjects
+        },
+        {
+            path:'/search',
+            name: 'search',
+            component: Search
         }
     ]
 });
